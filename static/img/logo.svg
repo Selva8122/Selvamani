@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Selvamani logo">
+  <defs>
+    <linearGradient id="g" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#8ab4ff" />
+      <stop offset="100%" stop-color="#2e7cf6" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="24" fill="#0f172a"/>
+  <path d="M36 92V36h16l20 27V36h16v56H72L52 65v27H36Z" fill="url(#g)"/>
+  <circle cx="92" cy="42" r="10" fill="#e2e8f0"/>
+</svg>

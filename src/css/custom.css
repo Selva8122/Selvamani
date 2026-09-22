@@ -1,0 +1,32 @@
+:root {
+  --ifm-color-primary: #2e7cf6;
+  --ifm-color-primary-dark: #205dcf;
+  --ifm-color-primary-darker: #1f4eb3;
+  --ifm-color-primary-darkest: #173f8c;
+  --ifm-color-primary-light: #6ea6ff;
+  --ifm-color-primary-lighter: #9ec2ff;
+  --ifm-code-font-size: 95%;
+  --ifm-font-family-base: 'Segoe UI', sans-serif;
+  --ifm-heading-font-family: 'Segoe UI', sans-serif;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme='dark'] {
+  --ifm-color-primary: #8ab4ff;
+  --ifm-color-primary-dark: #6ea4ff;
+  --ifm-color-primary-darker: #4b87ff;
+  --ifm-color-primary-darkest: #255be0;
+  --ifm-color-primary-light: #b4d0ff;
+  --ifm-color-primary-lighter: #dfeeff;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
+}
+
+.markdown > h1,
+.markdown > h2,
+.markdown > h3 {
+  margin-top: 2rem;
+}
+
+.navbar__brand {
+  font-weight: 700;
+}

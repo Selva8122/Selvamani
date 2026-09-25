@@ -1,0 +1,13 @@
+
+> selvamani-portfolio@1.0.0 build
+> docusaurus build ; echo EXIT:0
+
+
+[ERROR] [Error: ENOENT: no such file or directory, lstat 'd:\Repos\Selvamani\;'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'lstat',
+  path: 'd:\\Repos\\Selvamani\\;'
+}
+[INFO] Docusaurus version: 3.10.2
+Node version: v24.21.0

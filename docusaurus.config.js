@@ -8,7 +8,7 @@ const config = {
   tagline: 'Technical writer and docs engineer crafting clear, maintainable product documentation.',
   favicon: 'img/favicon.svg',
   url: 'https://selvamani.github.io',
-  baseUrl: '/portfolio/',
+  baseUrl: '/Selvamani/',
   organizationName: 'selvamani',
   projectName: 'portfolio',
   onBrokenLinks: 'throw',

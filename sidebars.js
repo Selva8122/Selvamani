@@ -6,6 +6,7 @@ module.exports = {
     items: [
       'intro',
       'portfolio/technical-writing',
+      'api-reference',
       'portfolio/process',
       'portfolio/projects',
       'portfolio/ci-cd',

@@ -43,6 +43,7 @@ const config = {
       items: [
         { to: '/docs/intro', label: 'Portfolio', position: 'left' },
         { to: '/docs/portfolio/technical-writing', label: 'Case Studies', position: 'left' },
+        { to: '/docs/portfolio/api-reference', label: 'API Reference', position: 'left'},
         { href: 'https://github.com/selvamani', label: 'GitHub', position: 'right' },
         { href: 'https://www.linkedin.com', label: 'LinkedIn', position: 'right' },
       ],

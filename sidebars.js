@@ -5,10 +5,10 @@ module.exports = {
     collapsed: false,
     items: [
       'intro',
-      'Portfolio/technical-writing',
-      'Portfolio/process',
-      'Portfolio/projects',
-      'Portfolio/ci-cd',
+      'portfolio/technical-writing',
+      'portfolio/process',
+      'portfolio/projects',
+      'portfolio/ci-cd',
     ],
   }],
 };

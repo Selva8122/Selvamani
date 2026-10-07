@@ -28,20 +28,38 @@ html, body {
   background-color: #efedff;
 }
 
+.navbar {
+  background: linear-gradient( #055aa0 100%);
+  box-shadow: none;
+}
+
+.navbar__brand,
+.navbar__title,
+.navbar__link,
+.navbar__items .navbar__item {
+  color: #ffffff !important;
+}
+
+.navbar__link:hover,
+.navbar__link:focus,
+.navbar__link[aria-current='page'] {
+  color: #dfeeff !important;
+}
+
 .theme-doc-markdown > h1,
 article h1 {
-  color: #2e7cf6;
+  color: #1d1c1d;
   font-size: 2.5rem;
   font-weight: 700;
 }
 .theme-doc-markdown > h2,
 article h2 {
-  color: #2e7cf6;
+  color:#1d1c1d;
 }
 .theme-doc-markdown > h3,
 article h3 {
   margin-top: 2rem;
-  color: #2e7cf6;
+  color: #1d1c1d;
 }
 
 .navbar__brand {

@@ -29,11 +29,29 @@
   flex-wrap: wrap;
 }
 
+.profilePanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.profileImage {
+  width: min(320px, 100%);
+  aspect-ratio: 3/4;
+  object-fit: full;
+  border-radius: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+}
+
 .badges {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   align-items: flex-start;
+  width: 100%;
 }
 
 .badges span {
@@ -48,5 +66,9 @@
 @media screen and (max-width: 996px) {
   .heroContent {
     grid-template-columns: 1fr;
+  }
+
+  .profilePanel {
+    order: -1;
   }
 }

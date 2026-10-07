@@ -20,11 +20,28 @@ html[data-theme='dark'] {
   --ifm-color-primary-lighter: #dfeeff;
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
 }
+html, body {
+  background-color: #efedff;
+}
 
-.markdown > h1,
-.markdown > h2,
-.markdown > h3 {
+.theme-doc-markdown {
+  background-color: #efedff;
+}
+
+.theme-doc-markdown > h1,
+article h1 {
+  color: #2e7cf6;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.theme-doc-markdown > h2,
+article h2 {
+  color: #2e7cf6;
+}
+.theme-doc-markdown > h3,
+article h3 {
   margin-top: 2rem;
+  color: #2e7cf6;
 }
 
 .navbar__brand {

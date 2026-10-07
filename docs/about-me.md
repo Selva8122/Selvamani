@@ -68,7 +68,20 @@ internal editorial and QA review before publishing.
 - Authored and structured content using DITA, applying single-sourcing principles to enable content reuse across
 multiple documentation deliverables.
 - Published and maintained SOPs in Word and Confluence with consistent templates and version control, and reviewed them with engineering and support stakeholders before release.
-  
+
+***TLE Technologies Private Limited, Bangalore | Oct 2018 – Dec 2022***
+**Technical Writer**
+
+- Authored and revised maintenance documentation for Airbus aircraft in Arbortext Epic Editor, covering Aircraft Maintenance Manuals, Engine Manuals, parts catalogue and Avionics systems, in multiple XML schemas and Simplified Technical English.
+- Translated Modification Summaries, Engineering Orders, and Service Bulletins into clear maintenance tasks for technicians, and kept every update traceable to process specifications.
+- Built a repeatable checklist that mapped each engineering change to the tasks and parts it affected, and verified every part in Teamcenter, which reduced review comments and rework on each change package.
+- Analysed Bills of Materials (BOM) and engineering drawings to create installation and assembly breakdowns of parts using structured authoring tools.
+- Applied in-depth knowledge of engineering drawings, parts listings, interchangeability and effectivity, Service Bulletins and modifications to interpret technical data accurately for incorporation into documentation.
+- Reviewed 3D CAD models (Creo) in Teamcenter to confirm the exact part, position and configuration, and briefed the illustration team on accurate 3D-based figures, which reduced illustration revisions and shortened turnaround time per task.
+- Led knowledge-transfer sessions and authored process guides and templates, helping new team members reach independent delivery and making team-wide quality more consistent.
+- Managed documents through review, approval, and release under strict quality and version control, and incorporated feedback from engineers and reviewers before publication.
+- Recognized with the Star Performer Award in 2021 and 2022 for quality and on-time delivery.
+
 ## Education
 
-**Bachelor of Engineering, Aeronautical Engineering | 2014 – 2018** <br></br>Sri Ramakrishna Engineering College, Coimbatore
+**Bachelor of Engineering, Aeronautical Engineering | 2014 – 2018** <br></br>Sri Ramakrishna Engineering College, Coimbatore.

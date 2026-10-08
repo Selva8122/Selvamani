@@ -1,9 +1,3 @@
----
-sidebar: apiReferenceSidebar
-sidebar_position: 3
-title: Authentication and Authorization
----
-
 # Authentication and Authorization
 
 The Weather API uses **authentication and authorization** to ensure that only approved applications and users can access API resources.
@@ -48,6 +42,3 @@ When making requests to protected Weather API endpoints:
 3. Send the request to the appropriate API endpoint.
 4. The API validates the credentials and permissions.
 5. If authentication and authorization are successful, the API processes the request and returns the requested data.
-
-
-[View API Documentation](/redoc-preview)

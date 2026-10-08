@@ -1,5 +1,5 @@
 module.exports = {
-  tutorialSidebar: [
+  caseStudiesSidebar: [
     {
       type: 'category',
       label: 'Case Studies',
@@ -10,14 +10,19 @@ module.exports = {
         'case studies/projects',
         'case studies/ci-cd',
       ],
-    }
+    },
   ],
-    tutorialSidebar: [
+  apiReferenceSidebar: [
     {
       type: 'category',
       label: 'API Reference',
       collapsed: false,
-      items: ['api reference/getting started'],
+      items: [
+        'api reference/getting started',
+        'api reference/redocly documentation preview',
+        'api reference/authentication and authorization',
+        'api reference/api documentation',
+      ],
     },
   ],
 };

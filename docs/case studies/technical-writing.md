@@ -1,4 +1,5 @@
 ---
+sidebar: caseStudiesSidebar
 sidebar_position: 1
 title: Technical writing samples
 ---

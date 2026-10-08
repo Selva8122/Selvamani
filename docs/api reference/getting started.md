@@ -1,4 +1,5 @@
 ---
+sidebar: apiReferenceSidebar
 sidebar_position: 1
 title: Getting Started
 ---
@@ -31,8 +32,3 @@ This documentation site is built using **Docusaurus**. The API Reference is rend
 The OpenAPI specification serves as the source of truth for the API definition, while Redocly transforms that specification into a developer-friendly reference experience within the Docusaurus site.
 
 This approach helps maintain consistency between the API implementation and its documentation while providing developers with an interactive and easy-to-navigate API reference.
-
-
-[View API Documentation](/redoc-preview)
-
-

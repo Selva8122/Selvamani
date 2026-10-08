@@ -1,0 +1,290 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Open-Meteo API",
+    "version": "1.0.0",
+    "description": "Weather forecast and geocoding endpoints for Open-Meteo.",
+    "license": {
+      "name": "CC BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.open-meteo.com"
+    },
+    {
+      "url": "https://geocoding-api.open-meteo.com"
+    },
+    {
+      "url": "https://archive-api.open-meteo.com"
+    }
+  ],
+  "paths": {
+    "/v1/forecast": {
+      "get": {
+        "operationId": "getCurrentWeather",
+        "summary": "Get current weather or forecast data",
+        "description": "Returns current weather and optional forecast values for a given latitude and longitude.",
+        "parameters": [
+          {
+            "name": "latitude",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number"
+            },
+            "example": 12.9716
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number"
+            },
+            "example": 77.5946
+          },
+          {
+            "name": "current",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "temperature_2m,relative_humidity_2m,wind_speed_10m"
+          },
+          {
+            "name": "daily",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "temperature_2m_max,temperature_2m_min,precipitation_sum"
+          },
+          {
+            "name": "forecast_days",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 16
+            },
+            "example": 7
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "auto"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful weather response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherForecastResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Location not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/v1/search": {
+      "get": {
+        "operationId": "searchCityLocation",
+        "summary": "Search for a city or location",
+        "description": "Find locations by name and retrieve latitude, longitude, country and time zone information.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Bangalore"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": 5
+          },
+          {
+            "name": "language",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "en"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["json"]
+            },
+            "example": "json"
+          },
+          {
+            "name": "countryCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "IN"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful geocoding response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationSearchResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Location not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    }
+  },
+  "security": [],
+  "components": {
+    "securitySchemes": {},
+    "schemas": {
+      "CurrentWeather": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "temperature_2m": {
+            "type": "number"
+          },
+          "relative_humidity_2m": {
+            "type": "integer"
+          },
+          "wind_speed_10m": {
+            "type": "number"
+          }
+        }
+      },
+      "DailyWeather": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          "temperature_2m_max": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "temperature_2m_min": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "precipitation_sum": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "WeatherForecastResponse": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "current": {
+            "$ref": "#/components/schemas/CurrentWeather"
+          },
+          "daily": {
+            "$ref": "#/components/schemas/DailyWeather"
+          }
+        }
+      },
+      "LocationResult": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number"
+          },
+          "longitude": {
+            "type": "number"
+          },
+          "country_code": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          }
+        }
+      },
+      "LocationSearchResponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LocationResult"
+            }
+          }
+        }
+      }
+    }
+  }
+}

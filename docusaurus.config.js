@@ -12,7 +12,11 @@ const config = {
   organizationName: 'selvamani',
   projectName: 'portfolio',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -39,27 +43,25 @@ const config = {
       items: [
         { to: '/docs/portfolio/about-me', label: 'About Me', position: 'left' },
         { to: '/docs/intro', label: 'Portfolio', position: 'left' },
-        { to: '/docs/portfolio/technical-writing', label: 'Case Studies', position: 'left' },
-        { to: '/docs/portfolio/api-reference', label: 'API Reference', position: 'left'},
-        { href: 'https://github.com/selvamani', label: 'GitHub', position: 'right' },
-        { href: 'https://www.linkedin.com', label: 'LinkedIn', position: 'right' },
+        { to: '/docs/case%20studies/technical-writing', label: 'Case Studies', position: 'left' },
+        { to: '/docs/api%20reference/getting%20started', label: 'API Reference', position: 'left' },
+        { href: 'https://github.com/Selva8122/Selvamani', label: 'GitHub', position: 'right' },
+        { href: 'https://linkedin.com/in/selvamani-karthikeyan-5b623314a', label: 'LinkedIn', position: 'right' },
       ],
     },
     footer: {
       style: 'dark',
       links: [
         {
-          title: 'Portfolio',
+          title: 'Contact',
           items: [
-            { label: 'Overview', to: '/docs/intro' },
-            { label: 'Writing process', to: '/docs/portfolio/process' },
-          ],
-        },
-        {
-          title: 'Connect',
-          items: [
-            { label: 'GitHub', href: 'https://github.com/Selva8122/Selvamani' },
-            { label: 'LinkedIn', href: 'https://linkedin.com/in/selvamani-karthikeyan-5b623314a' },
+            {
+              label: 'Mail-selvam2836@gmail.com',
+              href: 'mailto:selvam2836@gmail.com',
+            },
+            {
+              html: 'Mobile: +91-8122135529',
+            },
           ],
         },
       ],

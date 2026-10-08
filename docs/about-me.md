@@ -69,7 +69,7 @@ internal editorial and QA review before publishing.
 multiple documentation deliverables.
 - Published and maintained SOPs in Word and Confluence with consistent templates and version control, and reviewed them with engineering and support stakeholders before release.
 
-***TLE Technologies Private Limited, Bangalore | Oct 2018 – Dec 2022***
+***TLE Technologies Private Limited, Bangalore | Oct 2018 – Dec 2022***<br></br>
 **Technical Writer**
 
 - Authored and revised maintenance documentation for Airbus aircraft in Arbortext Epic Editor, covering Aircraft Maintenance Manuals, Engine Manuals, parts catalogue and Avionics systems, in multiple XML schemas and Simplified Technical English.

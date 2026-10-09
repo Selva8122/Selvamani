@@ -1,8 +1,3 @@
----
-sidebar_position: 1
-title: Overview
----
-
 # Technical writing portfolio
 
 I help product teams document what matters most: product value, user workflows, release changes, and operational clarity. My work sits at the intersection of user empathy, developer enablement, and well-structured documentation systems.

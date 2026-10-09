@@ -1,9 +1,3 @@
----
-sidebar: caseStudiesSidebar
-sidebar_position: 1
-title: Technical writing samples
----
-
 # Technical writing samples
 
 ## Writing approach

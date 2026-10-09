@@ -5,9 +5,9 @@ module.exports = {
       label: 'Case Studies',
       collapsed: false,
       items: [
+        'case studies/greenway health developer documentation',
         'case studies/technical-writing',
         'case studies/process',
-        'case studies/projects',
         'case studies/ci-cd',
       ],
     },

@@ -47,7 +47,7 @@ const config = {
       items: [
         { to: '/docs/portfolio/about-me', label: 'About Me', position: 'left' },
         { to: '/docs/intro', label: 'Portfolio', position: 'left' },
-        { to: '/docs/case%20studies/technical-writing', label: 'Case Studies', position: 'left' },
+        { to: '/docs/case%20studies/greenway%20health%20developer%20documentation', label: 'Case Studies', position: 'left' },
         { to: '/docs/api%20reference/getting%20started', label: 'API Reference', position: 'left' },
         { href: 'https://github.com/Selva8122/Selvamani', label: 'GitHub', position: 'right' },
         { href: 'https://linkedin.com/in/selvamani-karthikeyan-5b623314a', label: 'LinkedIn', position: 'right' },

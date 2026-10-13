@@ -52,7 +52,7 @@ const config = {
         { href: 'https://github.com/Selva8122/Selvamani', label: 'GitHub', position: 'right' },
         { href: 'https://linkedin.com/in/selvamani-karthikeyan-5b623314a', label: 'LinkedIn', position: 'right' },
       ],
-    },
+    }, 
     footer: {
       style: 'dark',
       links: [

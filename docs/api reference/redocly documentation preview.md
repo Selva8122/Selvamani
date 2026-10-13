@@ -1,9 +1,3 @@
----
-sidebar: apiReferenceSidebar
-sidebar_position: 2
-title: Redocly API Documentation
----
-
 # Redocly API Documentation
 
 The Weather API Reference is generated from an **OpenAPI specification** using Redocly. Depending on the documentation implementation and content requirements, the API reference can be rendered using different approaches.
@@ -15,7 +9,7 @@ The two common approaches are:
 
 Both approaches use the OpenAPI specification as the source of API information, while the implementation determines how Redocly is loaded and rendered.
 
-## 1. HTML Script-Based Rendering
+## HTML Script-Based Rendering
 
 The HTML approach uses the Redoc custom element to embed the API reference directly into an HTML page. The Redoc JavaScript library is loaded using a `<script>` tag.
 
@@ -48,7 +42,7 @@ In this approach:
 
 This approach is useful when the API reference needs to be embedded into a relatively simple HTML page or when minimal customization is required.
 
-### Rendering Flow
+**Rendering Flow**
 
 ```text
 OpenAPI Specification
@@ -60,7 +54,7 @@ Redoc JavaScript library
 Rendered API Reference
 ```
 
-## 2. JavaScript-Based Rendering
+## JavaScript-Based Rendering
 
 The JavaScript approach initializes Redoc programmatically. Instead of specifying the API specification directly through the `<redoc>` element, JavaScript calls the Redoc initialization method and specifies where the API reference should be rendered.
 
@@ -152,3 +146,10 @@ The overall architecture can be represented as:
 Both approaches ultimately provide the same objective: **transforming the structured OpenAPI specification into a developer-friendly API reference**.
 
 The choice between them depends on the project's architecture, required customization, and how the API reference needs to be integrated with the rest of the documentation site.
+
+## API Documentation
+
+This page provides access to the complete Weather API documentation, including endpoints, request parameters, authentication requirements, response schemas, example requests, and responses. The API reference is generated from the OpenAPI specification and rendered using the Redocly JavaScript library. Redocly provides an interactive and easy-to-navigate interface for exploring the available API operations and schemas. 
+
+Select the link below to open the Redocly API Reference preview and explore the Weather API in detail.
+[View API Documentation](/redoc-preview)

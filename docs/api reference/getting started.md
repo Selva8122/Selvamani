@@ -1,9 +1,3 @@
----
-sidebar: apiReferenceSidebar
-sidebar_position: 1
-title: Getting Started
----
-
 # Getting Started
 
 This section provides detailed reference documentation for the **Weather API**, including available endpoints, request parameters, authentication requirements, response formats, HTTP status codes, and example requests and responses.

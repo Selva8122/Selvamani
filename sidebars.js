@@ -19,9 +19,8 @@ module.exports = {
       collapsed: false,
       items: [
         'api reference/getting started',
-        'api reference/redocly documentation preview',
         'api reference/authentication and authorization',
-        'api reference/api documentation',
+        'api reference/redocly documentation preview',
       ],
     },
   ],

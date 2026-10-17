@@ -1,5 +1,6 @@
 # Developer Documentation
 In Greenway Health, I worked as an API Technical Writer who owns the developer platform documentation including API documentation, SDKs, and Release Notes.
+
 ## What is FHIR API
 FHIR stands for **Fast Healthcare Interoperability Resources**. It is a healthcare data interoperability standard developed by  [HL7 International](https://hl7.org/fhir/).
 

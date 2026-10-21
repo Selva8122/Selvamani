@@ -21,6 +21,7 @@ module.exports = {
         'api reference/getting started',
         'api reference/authentication and authorization',
         'api reference/redocly documentation preview',
+        'api reference/fhir api documentation',
       ],
     },
   ],

@@ -1,286 +1,660 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Open-Meteo API",
-    "version": "1.0.0",
-    "description": "Weather forecast and geocoding endpoints for Open-Meteo.",
+    "title": "Acme Orders API",
+    "description": "Sample API for creating and retrieving customer orders.",
+    "version": "1.2.0",
+    "contact": {
+      "name": "Acme API Support",
+      "email": "api-support@acme.example.com",
+      "url": "https://developer.acme.example.com"
+    },
     "license": {
-      "name": "CC BY 4.0",
-      "url": "https://creativecommons.org/licenses/by/4.0/"
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
   "servers": [
     {
-      "url": "https://api.open-meteo.com"
+      "url": "https://api.acme.example.com/v1",
+      "description": "Production"
     },
     {
-      "url": "https://geocoding-api.open-meteo.com"
-    },
+      "url": "https://sandbox.api.acme.example.com/v1",
+      "description": "Sandbox"
+    }
+  ],
+  "tags": [
     {
-      "url": "https://archive-api.open-meteo.com"
+      "name": "Orders",
+      "description": "Create, list and retrieve orders"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
     }
   ],
   "paths": {
-    "/v1/forecast": {
+    "/orders": {
       "get": {
-        "operationId": "getCurrentWeather",
-        "summary": "Get current weather or forecast data",
-        "description": "Returns current weather and optional forecast values for a given latitude and longitude.",
+        "tags": ["Orders"],
+        "operationId": "listOrders",
+        "summary": "List orders",
+        "description": "Returns a paginated list of orders, newest first.",
         "parameters": [
           {
-            "name": "latitude",
+            "name": "status",
             "in": "query",
-            "required": true,
+            "description": "Filter by order status",
+            "required": false,
             "schema": {
-              "type": "number"
+              "type": "string",
+              "enum": ["pending", "paid", "shipped", "delivered", "cancelled"]
             },
-            "example": 12.9716
+            "example": "shipped"
           },
           {
-            "name": "longitude",
+            "name": "limit",
             "in": "query",
-            "required": true,
-            "schema": {
-              "type": "number"
-            },
-            "example": 77.5946
-          },
-          {
-            "name": "current",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "example": "temperature_2m,relative_humidity_2m,wind_speed_10m"
-          },
-          {
-            "name": "daily",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "example": "temperature_2m_max,temperature_2m_min,precipitation_sum"
-          },
-          {
-            "name": "forecast_days",
-            "in": "query",
+            "description": "Number of results per page (1-100)",
+            "required": false,
             "schema": {
               "type": "integer",
               "minimum": 1,
-              "maximum": 16
+              "maximum": 100,
+              "default": 20
             },
-            "example": 7
+            "example": 2
           },
           {
-            "name": "timezone",
+            "name": "page",
             "in": "query",
+            "description": "Page number, starting at 1",
+            "required": false,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
             },
-            "example": "auto"
+            "example": 1
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful weather response",
+            "description": "A paginated list of orders",
+            "headers": {
+              "X-Request-Id": {
+                "description": "Unique ID for the request, useful for support",
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/WeatherForecastResponse"
+                  "$ref": "#/components/schemas/OrderList"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "id": "ord_8f14e45f",
+                      "status": "shipped",
+                      "currency": "INR",
+                      "total": 15498.0,
+                      "createdAt": "2026-10-20T09:15:30Z",
+                      "customer": {
+                        "id": "cus_3a9d1c",
+                        "name": "Priya Raman",
+                        "email": "priya.raman@example.com"
+                      },
+                      "shippingAddress": {
+                        "line1": "42, 5th Cross, Indiranagar",
+                        "city": "Bengaluru",
+                        "state": "Karnataka",
+                        "postalCode": "560038",
+                        "country": "IN"
+                      },
+                      "items": [
+                        {
+                          "sku": "KB-MECH-87",
+                          "name": "Mechanical Keyboard (87-key)",
+                          "quantity": 1,
+                          "unitPrice": 8999.0
+                        },
+                        {
+                          "sku": "MS-WL-02",
+                          "name": "Wireless Mouse",
+                          "quantity": 2,
+                          "unitPrice": 3249.5
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ord_c9f0f895",
+                      "status": "shipped",
+                      "currency": "INR",
+                      "total": 2499.0,
+                      "createdAt": "2026-10-18T14:02:11Z",
+                      "customer": {
+                        "id": "cus_71be2e",
+                        "name": "Arjun Mehta",
+                        "email": "arjun.mehta@example.com"
+                      },
+                      "shippingAddress": {
+                        "line1": "18, Marine Drive",
+                        "city": "Mumbai",
+                        "state": "Maharashtra",
+                        "postalCode": "400020",
+                        "country": "IN"
+                      },
+                      "items": [
+                        {
+                          "sku": "HP-BT-11",
+                          "name": "Bluetooth Headphones",
+                          "quantity": 1,
+                          "unitPrice": 2499.0
+                        }
+                      ]
+                    }
+                  ],
+                  "pagination": {
+                    "page": 1,
+                    "limit": 2,
+                    "totalItems": 57,
+                    "totalPages": 29
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Orders"],
+        "operationId": "createOrder",
+        "summary": "Create an order",
+        "description": "Creates a new order in `pending` status.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrderRequest"
+              },
+              "example": {
+                "customerId": "cus_3a9d1c",
+                "currency": "INR",
+                "shippingAddress": {
+                  "line1": "42, 5th Cross, Indiranagar",
+                  "city": "Bengaluru",
+                  "state": "Karnataka",
+                  "postalCode": "560038",
+                  "country": "IN"
+                },
+                "items": [
+                  {
+                    "sku": "KB-MECH-87",
+                    "quantity": 1
+                  },
+                  {
+                    "sku": "MS-WL-02",
+                    "quantity": 2
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Order created",
+            "headers": {
+              "Location": {
+                "description": "URL of the newly created order",
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "example": "https://api.acme.example.com/v1/orders/ord_8f14e45f"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                },
+                "example": {
+                  "id": "ord_8f14e45f",
+                  "status": "pending",
+                  "currency": "INR",
+                  "total": 15498.0,
+                  "createdAt": "2026-10-23T07:21:00Z",
+                  "customer": {
+                    "id": "cus_3a9d1c",
+                    "name": "Priya Raman",
+                    "email": "priya.raman@example.com"
+                  },
+                  "shippingAddress": {
+                    "line1": "42, 5th Cross, Indiranagar",
+                    "city": "Bengaluru",
+                    "state": "Karnataka",
+                    "postalCode": "560038",
+                    "country": "IN"
+                  },
+                  "items": [
+                    {
+                      "sku": "KB-MECH-87",
+                      "name": "Mechanical Keyboard (87-key)",
+                      "quantity": 1,
+                      "unitPrice": 8999.0
+                    },
+                    {
+                      "sku": "MS-WL-02",
+                      "name": "Wireless Mouse",
+                      "quantity": 2,
+                      "unitPrice": 3249.5
+                    }
+                  ]
                 }
               }
             }
           },
           "400": {
-            "description": "Bad request"
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "code": "invalid_request",
+                  "message": "Validation failed for one or more fields.",
+                  "details": [
+                    {
+                      "field": "items[1].quantity",
+                      "issue": "Must be greater than or equal to 1."
+                    }
+                  ]
+                }
+              }
+            }
           },
-          "404": {
-            "description": "Location not found"
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           },
           "429": {
-            "description": "Too many requests"
+            "$ref": "#/components/responses/TooManyRequests"
           }
         }
       }
     },
-    "/v1/search": {
+    "/orders/{orderId}": {
       "get": {
-        "operationId": "searchCityLocation",
-        "summary": "Search for a city or location",
-        "description": "Find locations by name and retrieve latitude, longitude, country and time zone information.",
+        "tags": ["Orders"],
+        "operationId": "getOrder",
+        "summary": "Retrieve an order",
+        "description": "Returns a single order by its ID.",
         "parameters": [
           {
-            "name": "name",
-            "in": "query",
+            "name": "orderId",
+            "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "Bangalore"
-          },
-          {
-            "name": "count",
-            "in": "query",
-            "schema": {
-              "type": "integer"
-            },
-            "example": 5
-          },
-          {
-            "name": "language",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "example": "en"
-          },
-          {
-            "name": "format",
-            "in": "query",
+            "description": "Unique order identifier",
             "schema": {
               "type": "string",
-              "enum": ["json"]
+              "pattern": "^ord_[a-f0-9]{8}$"
             },
-            "example": "json"
-          },
-          {
-            "name": "countryCode",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            },
-            "example": "IN"
+            "example": "ord_8f14e45f"
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful geocoding response",
+            "description": "The requested order",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LocationSearchResponse"
+                  "$ref": "#/components/schemas/Order"
+                },
+                "example": {
+                  "id": "ord_8f14e45f",
+                  "status": "delivered",
+                  "currency": "INR",
+                  "total": 15498.0,
+                  "createdAt": "2026-10-20T09:15:30Z",
+                  "customer": {
+                    "id": "cus_3a9d1c",
+                    "name": "Priya Raman",
+                    "email": "priya.raman@example.com"
+                  },
+                  "shippingAddress": {
+                    "line1": "42, 5th Cross, Indiranagar",
+                    "city": "Bengaluru",
+                    "state": "Karnataka",
+                    "postalCode": "560038",
+                    "country": "IN"
+                  },
+                  "items": [
+                    {
+                      "sku": "KB-MECH-87",
+                      "name": "Mechanical Keyboard (87-key)",
+                      "quantity": 1,
+                      "unitPrice": 8999.0
+                    },
+                    {
+                      "sku": "MS-WL-02",
+                      "name": "Wireless Mouse",
+                      "quantity": 2,
+                      "unitPrice": 3249.5
+                    }
+                  ]
                 }
               }
             }
           },
-          "400": {
-            "description": "Bad request"
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
           },
           "404": {
-            "description": "Location not found"
-          },
-          "429": {
-            "description": "Too many requests"
+            "description": "Order not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                },
+                "example": {
+                  "code": "order_not_found",
+                  "message": "No order exists with ID ord_00000000."
+                }
+              }
+            }
           }
         }
       }
     }
   },
-  "security": [],
   "components": {
-    "securitySchemes": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Pass the access token in the Authorization header: `Authorization: Bearer <token>`"
+      }
+    },
     "schemas": {
-      "CurrentWeather": {
+      "Order": {
         "type": "object",
-        "properties": {
-          "time": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "temperature_2m": {
-            "type": "number"
-          },
-          "relative_humidity_2m": {
-            "type": "integer"
-          },
-          "wind_speed_10m": {
-            "type": "number"
-          }
-        }
-      },
-      "DailyWeather": {
-        "type": "object",
-        "properties": {
-          "time": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "date"
-            }
-          },
-          "temperature_2m_max": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          },
-          "temperature_2m_min": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          },
-          "precipitation_sum": {
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          }
-        }
-      },
-      "WeatherForecastResponse": {
-        "type": "object",
-        "properties": {
-          "latitude": {
-            "type": "number"
-          },
-          "longitude": {
-            "type": "number"
-          },
-          "timezone": {
-            "type": "string"
-          },
-          "current": {
-            "$ref": "#/components/schemas/CurrentWeather"
-          },
-          "daily": {
-            "$ref": "#/components/schemas/DailyWeather"
-          }
-        }
-      },
-      "LocationResult": {
-        "type": "object",
+        "required": ["id", "status", "currency", "total", "createdAt", "customer", "shippingAddress", "items"],
         "properties": {
           "id": {
-            "type": "integer"
+            "type": "string",
+            "description": "Unique order ID",
+            "example": "ord_8f14e45f"
           },
-          "name": {
-            "type": "string"
+          "status": {
+            "type": "string",
+            "enum": ["pending", "paid", "shipped", "delivered", "cancelled"],
+            "description": "Current order status",
+            "example": "pending"
           },
-          "latitude": {
-            "type": "number"
+          "currency": {
+            "type": "string",
+            "description": "ISO 4217 currency code",
+            "minLength": 3,
+            "maxLength": 3,
+            "example": "INR"
           },
-          "longitude": {
-            "type": "number"
+          "total": {
+            "type": "number",
+            "format": "double",
+            "description": "Order total including all items",
+            "example": 15498.0
           },
-          "country_code": {
-            "type": "string"
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp (UTC)",
+            "example": "2026-10-23T07:21:00Z"
           },
-          "country": {
-            "type": "string"
+          "customer": {
+            "$ref": "#/components/schemas/Customer"
           },
-          "timezone": {
-            "type": "string"
+          "shippingAddress": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
           }
         }
       },
-      "LocationSearchResponse": {
+      "OrderItem": {
         "type": "object",
+        "required": ["sku", "name", "quantity", "unitPrice"],
         "properties": {
-          "results": {
+          "sku": {
+            "type": "string",
+            "example": "KB-MECH-87"
+          },
+          "name": {
+            "type": "string",
+            "example": "Mechanical Keyboard (87-key)"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 1
+          },
+          "unitPrice": {
+            "type": "number",
+            "format": "double",
+            "example": 8999.0
+          }
+        }
+      },
+      "Customer": {
+        "type": "object",
+        "required": ["id", "name", "email"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "cus_3a9d1c"
+          },
+          "name": {
+            "type": "string",
+            "example": "Priya Raman"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "priya.raman@example.com"
+          }
+        }
+      },
+      "Address": {
+        "type": "object",
+        "required": ["line1", "city", "state", "postalCode", "country"],
+        "properties": {
+          "line1": {
+            "type": "string",
+            "example": "42, 5th Cross, Indiranagar"
+          },
+          "line2": {
+            "type": "string",
+            "nullable": true,
+            "example": "Near Metro Station"
+          },
+          "city": {
+            "type": "string",
+            "example": "Bengaluru"
+          },
+          "state": {
+            "type": "string",
+            "example": "Karnataka"
+          },
+          "postalCode": {
+            "type": "string",
+            "example": "560038"
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code",
+            "example": "IN"
+          }
+        }
+      },
+      "CreateOrderRequest": {
+        "type": "object",
+        "required": ["customerId", "currency", "shippingAddress", "items"],
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "example": "cus_3a9d1c"
+          },
+          "currency": {
+            "type": "string",
+            "example": "INR"
+          },
+          "shippingAddress": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["sku", "quantity"],
+              "properties": {
+                "sku": {
+                  "type": "string",
+                  "example": "MS-WL-02"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "example": 2
+                }
+              }
+            }
+          }
+        }
+      },
+      "OrderList": {
+        "type": "object",
+        "required": ["data", "pagination"],
+        "properties": {
+          "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/LocationResult"
+              "$ref": "#/components/schemas/Order"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination"
+          }
+        }
+      },
+      "Pagination": {
+        "type": "object",
+        "required": ["page", "limit", "totalItems", "totalPages"],
+        "properties": {
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "limit": {
+            "type": "integer",
+            "example": 20
+          },
+          "totalItems": {
+            "type": "integer",
+            "example": 57
+          },
+          "totalPages": {
+            "type": "integer",
+            "example": 3
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": ["code", "message"],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Machine-readable error code",
+            "example": "invalid_request"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable error message",
+            "example": "Validation failed for one or more fields."
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string",
+                  "example": "items[1].quantity"
+                },
+                "issue": {
+                  "type": "string",
+                  "example": "Must be greater than or equal to 1."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "Missing or invalid access token",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "code": "unauthorized",
+              "message": "The access token is missing, expired or invalid."
+            }
+          }
+        }
+      },
+      "TooManyRequests": {
+        "description": "Rate limit exceeded",
+        "headers": {
+          "Retry-After": {
+            "description": "Seconds to wait before retrying",
+            "schema": {
+              "type": "integer",
+              "example": 30
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "code": "rate_limit_exceeded",
+              "message": "Too many requests. Retry after 30 seconds."
             }
           }
         }

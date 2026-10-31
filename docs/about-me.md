@@ -5,6 +5,8 @@ title: About Me
  
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
 Technical Writer with 8+ years of experience creating, editing, and maintaining technical publications throughout the product lifecycle for healthcare software, APIs, and aircraft maintenance. Skilled in structured authoring (DITA/XML) using Oxygen XML Author, Arbortext Epic Editor, MadCap Flare, and Adobe FrameMaker, with single-sourcing, terminology management, and
 Simplified Technical English. Experienced translating complex technical information into clear user guides, online help, API references, and release notes by interviewing SMEs and partnering with Engineering, Product Management, QA, and Support across global teams. Hands on with Docs-as-Code (Git, GitHub, Markdown, CI/CD publishing), and documentation quality,
 review, and defect-tracking processes in regulated industries.
@@ -24,13 +26,12 @@ English, FHIR API, HL7, Doc-as-Code workflow
 Postman, Swagger, Oxygen XML Author, Adobe RoboHelp, Adobe FrameMaker, Jira, Redocly, Readme.io, and
 docusaurus
 
-**Collaboration & Process:** Cross-functional stakeholder management, peer review & QA workflows, Agile/Scrum
-ticketing systems, process improvement, feedback analysis & 
-content updates, distributed/global team collaboration
+**Collaboration & Process:** Cross-functional stakeholder management, peer review & QA workflows, Agile/Scrum ticketing systems, process improvement, feedback analysis & content updates, distributed/global team collaboration
 
 ## Professional Experience
 
-***Greenway Health India Pvt Ltd Bangalore* | *Dec 2024 - Sep 2026*** <br></br> **Senior API Technical Writer**
+***Greenway Health India Pvt Ltd Bangalore* | *Dec 2024 - Sep 2026***  
+**Senior API Technical Writer**
 
 - Own end-to-end content lifecycle drafting, revising, and coordinating peer and quality reviews for developerfacing API documentation across the FHIR Developer Hub, Intergy, and Prime Suite platforms.
 - Write and maintain API reference documentation, how-to guides, release notes, and onboarding content,

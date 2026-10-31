@@ -9,6 +9,17 @@ module.exports = {
         'case studies/technical-writing',
         'case studies/process',
         'case studies/ci-cd',
+        {
+          type: 'category',
+          label: 'Docascode',
+          items: [
+            'case studies/docascode/docascode',
+            'case studies/docascode/how the workflow works',
+            'case studies/docascode/prerequisites',
+            'case studies/docascode/repository structure',
+            'case studies/docascode/setup guide',
+          ],
+        },
       ],
     },
   ],

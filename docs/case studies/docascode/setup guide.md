@@ -29,3 +29,7 @@ The Docusaurus generator needs an empty target folder, so create the project in 
 4. Delete the temp-site folder.
 
 The repository root now **contains docs, src, static, docusaurus.config.js, sidebars.js and package.json**, matching the structure in section 4.
+
+:::Important
+This is a Test message.
+:::
